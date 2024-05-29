@@ -11,6 +11,7 @@ public class PlayerCollider : MonoBehaviour
         {
             Destroy(other.gameObject);
             playerScore.IncreaseScore();
+            GoldController.Instance.IncreaseGold();
         }
     }
 }
