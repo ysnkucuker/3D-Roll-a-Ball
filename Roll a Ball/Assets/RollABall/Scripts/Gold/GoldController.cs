@@ -27,4 +27,14 @@ public class GoldController : MonoBehaviour
         _totalGoldCount += _goldIncreaseValue;
         _totalGoldCountText.text = _totalGoldCount.ToString();
     }
+
+    public void DecreaseGold()
+    {
+        _totalGoldCount--;
+        if(_totalGoldCount < 0)
+        {
+            _totalGoldCount = 0;
+        }
+        _totalGoldCountText.SetText(_totalGoldCount.ToString());
+    }
 }

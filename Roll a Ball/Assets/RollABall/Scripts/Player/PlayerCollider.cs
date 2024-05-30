@@ -13,5 +13,20 @@ public class PlayerCollider : MonoBehaviour
             playerScore.IncreaseScore();
             GoldController.Instance.IncreaseGold();
         }
+
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        if (collision.gameObject.CompareTag("Obstecle"))
+        {
+            GoldController.Instance.DecreaseGold();
+        }
+
+        if (collision.gameObject.CompareTag("Obstecle1"))
+        {
+            GameManager.instance.Pause();
+        }
     }
 }
