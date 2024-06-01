@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private GameObject _levelCompletedPanel;
     [SerializeField] private GameObject _gameOverPanel;
     [SerializeField] private int _goldCount;
     [SerializeField] private GameObject _gold;
@@ -28,7 +29,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        OpenLevelCompleted();   
     }
 
     public void GenerateGold()
@@ -42,9 +43,11 @@ public class GameManager : MonoBehaviour
             }
             Instantiate(_gold, new Vector3(_xVector, _yVector, _zVector), Quaternion.identity);
             _xVector += 3;
-        }     
+        }
+        Debug.Log(_goldCount);
     }
 
+    #region UI
     public void Pause()
     {
         _gameOverPanel.SetActive(true);
@@ -55,4 +58,13 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetSceneByBuildIndex(0).name);
     }
+
+    public void OpenLevelCompleted()
+    {
+        if(PlayerCollider.Instance._collectedGold == _goldCount)
+        {
+            _levelCompletedPanel.SetActive(true);
+        }
+    }
+    #endregion
 }

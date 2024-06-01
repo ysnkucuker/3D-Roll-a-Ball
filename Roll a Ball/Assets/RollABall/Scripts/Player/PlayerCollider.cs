@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class PlayerCollider : MonoBehaviour
 {
+    [SerializeField] public int _collectedGold = 0;
+    [SerializeField] private PlayerEffectController playerEffectController;
     public PlayerScore playerScore;
+
+    public static PlayerCollider Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Gold"))
@@ -12,6 +21,11 @@ public class PlayerCollider : MonoBehaviour
             Destroy(other.gameObject);
             playerScore.IncreaseScore();
             GoldController.Instance.IncreaseGold();
+            // GetComponent<PlayerEffectController>().PlayGoldParticleEffect(); Maliyetli
+            playerEffectController.PlayGoldParticleEffect(other.transform.position); //2. Yol
+            // playerEffectController.CreateParticleEffect(other.transform.position); 3. Yol
+            _collectedGold++;
+            //GameManager.instance.OpenLevelCompleted();
         }
 
     }
