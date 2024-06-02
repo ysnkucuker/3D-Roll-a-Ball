@@ -367,10 +367,12 @@
 "Assets/RollABall/Scripts/Game/GameManager.cs"
 "Assets/RollABall/Scripts/Gold/GoldController.cs"
 "Assets/RollABall/Scripts/Gold/GoldRotater.cs"
+"Assets/RollABall/Scripts/Gold/GoldSpawner.cs"
 "Assets/RollABall/Scripts/Player/PlayerCollider.cs"
 "Assets/RollABall/Scripts/Player/PlayerEffectController.cs"
 "Assets/RollABall/Scripts/Player/PlayerMovementControl.cs"
 "Assets/RollABall/Scripts/Player/PlayerScore.cs"
+"Assets/RollABall/Scripts/UI/MainMenu.cs"
 -langversion:9.0
 
 /deterministic

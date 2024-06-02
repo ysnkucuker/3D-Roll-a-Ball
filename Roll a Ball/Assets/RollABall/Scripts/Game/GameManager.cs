@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _xVector;
     [SerializeField] private float _yVector;
     [SerializeField] private float _zVector;
+    private int levelData;
     // Start is called before the first frame update
 
     public static GameManager instance;
@@ -56,15 +57,27 @@ public class GameManager : MonoBehaviour
 
     public void ReStart()
     {
-        SceneManager.LoadScene(SceneManager.GetSceneByBuildIndex(0).name);
+        SceneManager.LoadScene(0);
     }
 
     public void OpenLevelCompleted()
     {
-        if(PlayerCollider.Instance._collectedGold == _goldCount)
+        if(PlayerCollider.Instance._collectedGold == _goldCount || PlayerCollider.Instance._levelEnded == true)
         {
-            _levelCompletedPanel.SetActive(true);
+            _levelCompletedPanel.SetActive(true);           
         }
+    }
+
+    public void NextLevel()
+    {
+        levelData = PlayerPrefs.GetInt("levelData", 1);
+        if(levelData >= 2)
+        {
+            levelData = 2;
+        }
+        levelData++;
+        PlayerPrefs.SetInt("levelData", levelData);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     #endregion
 }

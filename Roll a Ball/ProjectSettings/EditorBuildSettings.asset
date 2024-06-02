@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/RollABall/Scenes/Main Menu.unity
+    guid: 1e260e423373d134bb125362350cb668
+  - enabled: 1
     path: Assets/RollABall/Scenes/Level01.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/RollABall/Scenes/Level02.unity
+    guid: 54d0c5504b3acc14f85edd56c86af47b
   m_configObjects: {}

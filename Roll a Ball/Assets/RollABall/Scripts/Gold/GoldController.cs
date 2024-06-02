@@ -6,7 +6,7 @@ using UnityEngine;
 public class GoldController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _totalGoldCountText;
-    [SerializeField] private int _totalGoldCount;
+    [SerializeField] private int _totalGoldCount = 0;
     [SerializeField] private int _goldIncreaseValue;
 
     public static GoldController Instance;
@@ -18,7 +18,9 @@ public class GoldController : MonoBehaviour
 
     private void Start()
     {
-        _totalGoldCountText.text = 0.ToString();
+        GetGoldData();
+        
+        _totalGoldCountText.text = _totalGoldCount.ToString();
     }
 
     public void IncreaseGold()
@@ -26,6 +28,7 @@ public class GoldController : MonoBehaviour
         _goldIncreaseValue = Random.Range(1, 10);
         _totalGoldCount += _goldIncreaseValue;
         _totalGoldCountText.text = _totalGoldCount.ToString();
+        PlayerPrefs.SetInt("goldData", _totalGoldCount);
     }
 
     public void DecreaseGold()
@@ -36,5 +39,15 @@ public class GoldController : MonoBehaviour
             _totalGoldCount = 0;
         }
         _totalGoldCountText.SetText(_totalGoldCount.ToString());
+        PlayerPrefs.SetInt("goldData", _totalGoldCount);
+    }
+
+    public void GetGoldData()
+    {
+        if (PlayerPrefs.HasKey("goldData"))
+        {
+            _totalGoldCount = PlayerPrefs.GetInt("goldData", 0);
+        }
+       
     }
 }

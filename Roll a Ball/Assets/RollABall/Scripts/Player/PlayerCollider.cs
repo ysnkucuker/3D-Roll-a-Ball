@@ -7,6 +7,7 @@ public class PlayerCollider : MonoBehaviour
     [SerializeField] public int _collectedGold = 0;
     [SerializeField] private PlayerEffectController playerEffectController;
     public PlayerScore playerScore;
+    public bool _levelEnded = false;
 
     public static PlayerCollider Instance;
 
@@ -41,6 +42,12 @@ public class PlayerCollider : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstecle1"))
         {
             GameManager.instance.Pause();
+        }
+
+        if (collision.gameObject.CompareTag("Finish"))
+        {
+            _levelEnded = true;
+            GameManager.instance.OpenLevelCompleted();
         }
     }
 }

@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/RollABall/Scenes/Level01.unity
+- path: Assets/RollABall/Scenes/Main Menu.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
